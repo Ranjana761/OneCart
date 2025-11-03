@@ -3,7 +3,7 @@
 // import { shopDataContext } from '../context/ShopContext'
 // import { useNavigate } from 'react-router-dom'
 // import { IoTrashBin } from "react-icons/io5";
-// import CartTotal from '../component/cartTotal';
+// import CartTotal from '../component/CartTotal';
 
 
 // function Cart() {
