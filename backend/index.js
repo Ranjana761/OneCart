@@ -15,7 +15,7 @@ let port = process.env.PORT || 8000 ;
 let app = express()
 
 app.use(cors({
-  origin: ["https://onecart-frontend-1oay.onrender.com", "http://localhost:5174"],
+  origin: ["https://onecart-frontend-1oay.onrender.com", "https://onecart-admin-0ocp.onrender.com"],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"]
