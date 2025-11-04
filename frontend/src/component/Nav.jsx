@@ -7,7 +7,7 @@ import {userDataContext} from '../context/UserContext'
 import { IoSearchCircleSharp } from "react-icons/io5";
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios';
-import { authDatacontext } from '../context/authContext';
+import { authDatacontext } from '../context/AuthContext';
 import { IoMdHome } from "react-icons/io";
 import { BiCollection } from "react-icons/bi";
 import { MdContacts } from "react-icons/md";
