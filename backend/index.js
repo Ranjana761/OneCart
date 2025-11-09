@@ -14,12 +14,22 @@ let port = process.env.PORT || 8000 ;
 
 let app = express()
 
+// app.use(cors({
+//   origin: ["https://onecart-frontend-1oay.onrender.com", "https://onecart-admin-0ocp.onrender.com"],
+//   credentials: true,
+//   methods: ["GET", "POST", "PUT", "DELETE"],
+//   allowedHeaders: ["Content-Type", "Authorization"]
+// }))
 app.use(cors({
-  origin: ["https://onecart-frontend-1oay.onrender.com", "https://onecart-admin-0ocp.onrender.com"],
-  credentials: true,
+  origin: [
+    "https://onecart-frontend-1oay.onrender.com",
+    "https://onecart-admin-0ocp.onrender.com",
+    "http://localhost:3000", // keep for local development
+  ],
+  credentials: true, // Required for cookies
   methods: ["GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type", "Authorization"]
-}))
+  allowedHeaders: ["Content-Type", "Authorization"],
+}));
   
 app.use(express.json())
 app.use(cookieParser())
