@@ -21,12 +21,19 @@ export const registration = async (req, res) =>{
 
         const user = await User.create({name,email,password:hashPassword})
         let token = await genToken(user._id)
-        res.cookie("token",token,{
-            httpOnly:true,
-            secure:true,
-            sameSite:"none",
-            maxAge: 7 * 24 * 60 * 60 * 1000
-        })
+        // res.cookie("token",token,{
+        //     httpOnly:true,
+        //     secure:true,
+        //     sameSite:"none",
+        //     maxAge: 7 * 24 * 60 * 60 * 1000
+        // })
+        res.cookie("token", token, {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production", // ✅ true on Render
+  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", // ✅ important
+  maxAge: 7 * 24 * 60 * 60 * 1000,
+});
+
         return res.status(201).json(user)
     }catch(error){
         console.log("registration error")
@@ -48,12 +55,19 @@ export const login = async (req,res) =>{
         }
 
         let token = await genToken(user._id)
-        res.cookie("token",token,{
-            httpOnly:true,
-            secure:true,
-            sameSite:"none",
-            maxAge: 7 * 24 * 60 * 60 * 1000
-        })
+        // res.cookie("token",token,{
+        //     httpOnly:true,
+        //     secure:true,
+        //     sameSite:"none",
+        //     maxAge: 7 * 24 * 60 * 60 * 1000
+        // })
+        res.cookie("token", token, {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production", // ✅ true on Render
+  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", // ✅ important
+  maxAge: 7 * 24 * 60 * 60 * 1000,
+});
+
         return res.status(200).json({  // Changed status to 200
             message: "Login successful",
             user: {
@@ -91,12 +105,19 @@ export const googleLogin = async (req,res) => {
         }
        
         let token = await genToken(user._id)
-        res.cookie("token",token,{
-            httpOnly:true,
-            secure:true,
-            sameSite:"none",
-            maxAge: 7 * 24 * 60 * 60 * 1000
-        })
+        // res.cookie("token",token,{
+        //     httpOnly:true,
+        //     secure:true,
+        //     sameSite:"none",
+        //     maxAge: 7 * 24 * 60 * 60 * 1000
+        // })
+        res.cookie("token", token, {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production", // ✅ true on Render
+  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", // ✅ important
+  maxAge: 7 * 24 * 60 * 60 * 1000,
+});
+
         return res.status(200).json({  // Changed status to 200
             message: "Login successful",
             user: {
@@ -118,12 +139,19 @@ export const adminLogin = async(req,res)=>{
         if(email === process.env.ADMIN_EMAIL && password === 
             process.env.ADMIN_PASSWORD){
                 let token = await genToken1(email)
-            res.cookie("token",token,{
-            httpOnly:true,
-            secure:true,
-            sameSite:"none",
-            maxAge: 7 * 24 * 60 * 60 * 1000
-        })
+        //     res.cookie("token",token,{
+        //     httpOnly:true,
+        //     secure:true,
+        //     sameSite:"none",
+        //     maxAge: 7 * 24 * 60 * 60 * 1000
+        // })
+            res.cookie("token", token, {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production", // ✅ true on Render
+  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", // ✅ important
+  maxAge: 7 * 24 * 60 * 60 * 1000,
+});
+
           return res.status(200).json({
         // message: "Admin login successful",
         // token
